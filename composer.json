@@ -1,11 +1,11 @@
 {
-    "name": "houdunwang/laravel-autocreate",
+    "name": "georgie/laravel-autocreate",
     "description": "auto create laravel controller view",
     "license": "MIT",
     "authors": [
         {
-            "name": "houdunwang",
-            "email": "2300071698@qq.com"
+            "name": "georgie",
+            "email": "227040015@qq.com"
         }
     ],
     "extra": {
