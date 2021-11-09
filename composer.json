@@ -11,10 +11,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "\\Houdunwang\\AutoCreate\\ServiceProvider"
+                "\\Georgie\\AutoCreate\\ServiceProvider"
             ],
             "aliases": {
-                "HDModule": "\\Houdunwang\\AutoCreate\\Factory"
+                "GModule": "\\Georgie\\AutoCreate\\Factory"
             }
         }
     },
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Houdunwang\\AutoCreate\\": "src/"
+            "Georgie\\AutoCreate\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "houdunwang\\AutoCreate\\Tests\\": "tests/"
+            "georgie\\AutoCreate\\Tests\\": "tests/"
         }
     }
 }
