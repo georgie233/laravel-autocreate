@@ -17,7 +17,7 @@ class AutoCreateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'hd:autocreate {model} {module} {title}';
+    protected $signature = 'g:autocreate {model} {module} {title}';
 
     /**
      * The console command description.

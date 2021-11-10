@@ -23,4 +23,10 @@ class {MODEL}Request extends FormRequest
     {
         return true;
     }
+
+
+    public function attributes()
+    {
+        return [];
+    }
 }

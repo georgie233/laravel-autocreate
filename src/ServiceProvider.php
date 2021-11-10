@@ -1,9 +1,4 @@
 <?php
-/** .-------------------------------------------------------------------
- * |      Site: www.hdcms.com
- * |      Date: 2018/6/25 下午2:54
- * |    Author: 向军大叔 <2300071698@qq.com>
- * '-------------------------------------------------------------------*/
 
 namespace Georgie\AutoCreate;
 
@@ -35,7 +30,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('HDAutoCreate', function () {
+        $this->app->singleton('GAutoCreate', function () {
             return new Provider();
         });
     }
