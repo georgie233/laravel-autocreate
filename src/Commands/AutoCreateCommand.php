@@ -111,6 +111,7 @@ class AutoCreateCommand extends Command
         $dir = $this->vars['VIEW_PATH'];
         is_dir($dir) or mkdir($dir, 0755, true);
         $this->createIndexBlade();//创建PC显示页面
+        $this->createMobileBlade();//创建PC显示页面
         $this->createCreateAndEditBlade();//创建PC编辑和修改页面
     }
 
@@ -128,9 +129,9 @@ class AutoCreateCommand extends Command
         }
         if ($this->module) {
             $route .= <<<str
-\n 
+\n
 //{$this->vars['SMODEL']}-route
-Route::group(['middleware' => ['web'],'prefix'=>'{$this->vars['SMODULE']}','namespace'=>"{$this->vars['NAMESPACE_HTTP']}\Controllers"], 
+Route::group(['middleware' => ['web'],'prefix'=>'{$this->vars['SMODULE']}','namespace'=>"{$this->vars['NAMESPACE_HTTP']}\Controllers"],
 function () {
     Route::resource('{$this->vars['SMODEL']}', '{$this->vars['MODEL']}Controller');
 });
@@ -138,14 +139,14 @@ str;
             $route .= <<<str
 \n \n
 //{$this->vars['SMODEL']}-route-api
-Route::group(['middleware' => ['api'],'prefix'=>'api/{$this->vars['SMODULE']}','namespace'=>"{$this->vars['NAMESPACE_HTTP']}\Controllers"], 
+Route::group(['middleware' => ['api'],'prefix'=>'api/{$this->vars['SMODULE']}','namespace'=>"{$this->vars['NAMESPACE_HTTP']}\Controllers"],
 function () {
     Route::resource('{$this->vars['SMODEL']}', '{$this->vars['MODEL']}Controller');
 });
 str;
         } else {
             $route .= <<<str
-\n 
+\n
 //{$this->vars['SMODEL']}-route
 Route::resource('{$this->vars['SMODEL']}', '{$this->vars['MODEL']}Controller');
 str;

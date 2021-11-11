@@ -32,6 +32,34 @@ trait CreateView
         }
     }
 
+    protected function createMobileBlade(){
+        //移动端 首页
+        $COLUMNS = '';
+        foreach ($this->formatColumns() as $column) {
+            if (isset($column['options']) && count($column['options']) >= 2) {
+                $COLUMNS .= "<th>{$column['title']}</th>";
+            }
+        }
+        $this->setVar('COLUMNS', $COLUMNS);
+        $COLUMNS_VALUE = '';
+        foreach ($this->formatColumns() as $column) {
+            if (isset($column['options']) && count($column['options']) >= 2) {
+                if ($column['options'][1] == 'image') {
+                    $COLUMNS_VALUE .= "<td><img src='{!! \$d['{$column['name']}'] !!}' style='width:45px;height:45px;'/></td>";
+                } else {
+                    $COLUMNS_VALUE .= "<td>{!! \$d['{$column['name']}'] !!}</td>";
+                }
+            }
+        }
+        $this->setVar('COLUMNS_VALUE', $COLUMNS_VALUE);
+        $content = $this->replaceVars(__DIR__."/../Build/views/mobile.blade.php");
+        $file    = $this->vars['VIEW_PATH']."/mobile.blade.php";
+        if ( ! is_file($file)) {
+            file_put_contents($file, $content);
+            $this->info('mobile.blade.php view create successflly');
+        }
+    }
+
     protected function createCreateAndEditBlade()
     {
         $content = '';
@@ -136,7 +164,7 @@ str;
             foreach ($column['options'][2] as $value => $title) {
                 $content .= <<<str
            <option value="{$value}"
-            {{old('{$column['name']}',\${$this->vars['SMODEL']}['{$column['name']}'])=='{$value}'?'selected':''}} 
+            {{old('{$column['name']}',\${$this->vars['SMODEL']}['{$column['name']}'])=='{$value}'?'selected':''}}
             >{$title}</option>
 str;
             }

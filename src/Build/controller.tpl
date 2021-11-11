@@ -11,20 +11,12 @@ class {CONTROLLE_NAME} extends BaseController
     public function index(Request $request,{MODEL} ${SMODEL})
     {
         if ($this->isAjax){
-            if (isset($request->start) || isset($request->len)){
-                $data = ${SMODEL}->offset($request->start??0)->limit($request->len??10)->get();
-            }
-            else {
-                $data = ${SMODEL}->all();
-            }
-            return $this->responseSuccess([
-                'list'=>$data,
-                'count'=>${SMODEL}->all()->count()
-            ]);
+            $data = $this->handleAjaxIndex($request,${SMODEL});
+            return $this->responseSuccess($data);
         }
 
         $data = {MODEL}::paginate(10);
-        return view('{VIEW_NAME}.index', compact('data'));
+        return view(($this->isMobile() || $this->isWeixin())?'{VIEW_NAME}.mobile':'{VIEW_NAME}.index', compact('data'));
     }
 
     //创建视图 GET: /{SMODEL}/create
