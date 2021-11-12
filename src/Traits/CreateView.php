@@ -35,19 +35,22 @@ trait CreateView
     protected function createMobileBlade(){
         //移动端 首页
         $COLUMNS = '';
-        foreach ($this->formatColumns() as $column) {
-            if (isset($column['options']) && count($column['options']) >= 2) {
-                $COLUMNS .= "<th>{$column['title']}</th>";
-            }
-        }
+        //不需要标题栏目
+//        foreach ($this->formatColumns() as $column) {
+//            if (isset($column['options']) && count($column['options']) >= 2) {
+//                $COLUMNS .= "<th>{$column['title']}</th>";
+//            }
+//        }
+        $titles = $this->formatColumns();
         $this->setVar('COLUMNS', $COLUMNS);
         $COLUMNS_VALUE = '';
         foreach ($this->formatColumns() as $column) {
             if (isset($column['options']) && count($column['options']) >= 2) {
+//                $title =
                 if ($column['options'][1] == 'image') {
-                    $COLUMNS_VALUE .= "<td><img src='{!! \$d['{$column['name']}'] !!}' style='width:45px;height:45px;'/></td>";
+                    $COLUMNS_VALUE .= "<div class='row p-0'><div class='col-5'>{$column['title']}</div><div class='col-7'><img src='{!! \$d['{$column['name']}'] !!}' style='width:45px;height:45px;'/></div></div>";
                 } else {
-                    $COLUMNS_VALUE .= "<td>{!! \$d['{$column['name']}'] !!}</td>";
+                    $COLUMNS_VALUE .= "<div class='row p-0'><div class='col-5'>{$column['title']}</div><div class='col-7'>{!! \$d['{$column['name']}'] !!}</div></div>";
                 }
             }
         }

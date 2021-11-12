@@ -9,34 +9,36 @@
             </ul>
             <div class="card card-contrast card-border-color-success">
                 <div class="card-body">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th style="width: 10%;">编号</th>
-                            {COLUMNS}
-                            <th>创建时间</th>
-                            <th>修改时间</th>
-                            <th>&nbsp;</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($data as $d)
-                            <tr>
-                                <td>{!! $d['id'] !!}</td>
-                                {COLUMNS_VALUE}
-                                <td>{!! $d['created_at'] !!}</td>
-                                <td>{!! $d['updated_at'] !!}</td>
-                                <td class="text-right">
-                                    <a href="/{ROUTE_ROOT}/{{$d['id']}}/edit" class="btn btn-secondary">编辑</a>
-                                    <button type="button" class="btn btn-secondary btn-danger" onclick="del({{$d['id']}},this)">删除</button>
-                                    <form action="/{ROUTE_ROOT}/{{$d['id']}}" hidden method="post">
-                                        @csrf @method('DELETE')
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+
+                    @foreach($data as $d)
+                        <div class="card">
+                            <div class="card-body">
+                                <div data-toggle="collapse" data-target="#coll{{$d['id']}}">
+                                    {{-- main start --}}
+                                    {COLUMNS_VALUE}
+                                    {{-- main end --}}
+                                </div>
+                                <div id="coll{{$d['id']}}" class="collapse">
+
+                                    {{-- insert your secondary --}}
+
+                                    <div class="card-footer m-0 p-1 border-0 text-right">
+                                        <a href="/{ROUTE_ROOT}/{{$d['id']}}/edit" class="btn btn-secondary">编辑</a>
+                                        <button type="button" class="btn btn-secondary btn-danger"
+                                                onclick="del({{$d['id']}},this)">删除
+                                        </button>
+                                        <form action="/{ROUTE_ROOT}/{{$d['id']}}" hidden method="post">
+                                            @csrf @method('DELETE')
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer m-0 p-0 text-right" style="font-size: 12px;color: #666">
+                                <div style="margin-right: 5px;">创建时间：{!! $d['created_at'] !!}</div>
+                                <div style="margin-right: 5px;">修改时间：{!! $d['updated_at'] !!}</div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

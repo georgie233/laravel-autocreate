@@ -111,7 +111,7 @@ class AutoCreateCommand extends Command
         $dir = $this->vars['VIEW_PATH'];
         is_dir($dir) or mkdir($dir, 0755, true);
         $this->createIndexBlade();//创建PC显示页面
-        $this->createMobileBlade();//创建PC显示页面
+        $this->createMobileBlade();//创建手机显示页面
         $this->createCreateAndEditBlade();//创建PC编辑和修改页面
     }
 
