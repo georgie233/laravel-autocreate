@@ -2,6 +2,7 @@
 
 namespace Georgie\AutoCreate;
 
+use Georgie\AutoCreate\Commands\AuthCommand;
 use Georgie\AutoCreate\Commands\AutoCreateCommand;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -19,6 +20,7 @@ class ServiceProvider extends BaseServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 AutoCreateCommand::class,
+                AuthCommand::class,
             ]);
         }
     }
