@@ -12,6 +12,7 @@ use Storage;
 class AutoCreateCommand extends Command
 {
     use BuildVars, Db, CreateView;
+
     /**
      * The name and signature of the console command.
      *
@@ -31,6 +32,7 @@ class AutoCreateCommand extends Command
     protected $modelFile;
     protected $module;
     protected $title;
+
     /**
      * Create a new command instance.
      *
@@ -162,6 +164,22 @@ str;
         if (is_file($file)) {
             return false;
         }
+
+        $str = "";
+        foreach ($this->formatColumns() as $column) {
+            if (isset($column['options']) && count($column['options']) >= 2) {
+                if ($column['options'][1] == "image") {
+                    $str .= <<<str
+\n
+        \$s = \$this->saveFile(\$request, '{$column["name"]}', '请上传封面图片');
+        if (!is_string(\$s)) return \$s;
+        \$data['{$column["name"]}'] = \$s.'';
+str;
+                }
+            }
+        }
+
+        $this->setVar("STOREINSERT", $str);
         $content = $this->replaceVars(__DIR__ . '/../Build/controller.tpl');
         file_put_contents($file, $content);
         $this->info('controller create successflly');

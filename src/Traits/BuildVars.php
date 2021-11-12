@@ -31,6 +31,7 @@ trait BuildVars
         $this->vars['REQUEST_PATH']          = $this->vars['CONTROLLER_PATH'].'../Requests/';
         $this->vars['ROUTE_ROOT']            = $this->module ? $this->vars['SMODULE'].'/'. $this->vars['SMODEL'] :  $this->vars['SMODEL'];
         $this->vars['CONTROLLE_INDEX_ROUTE'] = $this->module ? '/'.$this->module.'/'.$this->model : '/'.$this->model;
+        $this->vars['STOREINSERT'] = '';//创建控制器添加
     }
 
     protected function getViewName()

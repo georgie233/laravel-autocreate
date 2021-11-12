@@ -6,7 +6,7 @@
             <li class="nav-item"><a href="/{ROUTE_ROOT}" class="nav-link">{MODEL_TITLE}列表</a></li>
             <li class="nav-item"><a href="#" class="nav-link active">修改{MODEL_TITLE}</a></li>
         </ul>
-        <form action="/{ROUTE_ROOT}/{{${SMODEL}['id']}}" method="post">
+        <form action="/{ROUTE_ROOT}/{{${SMODEL}['id']}}" method="post" enctype="multipart/form-data">
             <div class="card-body card-body-contrast">
                 @csrf @method('PUT')
                 {HTML}

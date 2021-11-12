@@ -29,7 +29,16 @@ class {CONTROLLE_NAME} extends BaseController
     //保存数据 POST: /{SMODEL}
     public function store({MODEL}Request $request,{MODEL} ${SMODEL})
     {
-        ${SMODEL}->fill($request->all());
+        $data = $request->all();
+
+        //$s = $this->saveFile($request, 'img', '请上传封面图片');
+        //if (!is_string($s)) return $s;
+        //$data['img'] = $s.'';
+
+        {STOREINSERT}
+
+
+        ${SMODEL}->fill($data);
         ${SMODEL}->save();
 
         if ($this->isAjax) return $this->responseSuccess(${SMODEL});
