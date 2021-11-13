@@ -162,7 +162,7 @@ str;
 
         <div class="form-group row">
             <label for="{$item}"
-                   class="col-md-4 col-form-label text-md-right">{$item}</label>
+                   class="col-md-4 col-form-label text-md-right">{{ __('{$item}') }}</label>
 
             <div class="col-md-6">
                 <input id="{$item}" type="text"
