@@ -48,6 +48,33 @@ class AuthCommand extends Command
         $this->alterController();
         $this->alterModel();
         $this->alterView();
+
+        $this->makeRoute();
+    }
+
+    protected function makeRoute()
+    {
+        $file = base_path("routes/api.php");
+        $str = file_get_contents($file);
+        if (strpos($str,'api-currency'))
+            return $this->info("api route exists");
+        $str .= <<<str
+//api-currency
+Route::group(['middleware' => 'api', 'prefix' => '','namespace'=>'Auth\Api'], function () {
+    Route::post("{key}/login", "AuthController@login");
+    Route::post("{key}/register","AuthController@register");
+});
+str;
+        file_put_contents($file,$str);
+
+        $a = __DIR__ . '/../dis/auth/Auth';
+        $b = base_path("app/Http/Controllers/Auth");
+        $this->xCopy($a,$b,1);
+
+        $a = __DIR__ . '/../dis/auth/model';
+        $b = base_path("app");
+        $this->xCopy($a,$b);
+        $this->info("copy complete!");
     }
 
     protected function alterController()
@@ -70,8 +97,8 @@ str;
         $re = app_path("Http/Controllers/Auth/RegisterController.php");
         $str = file_get_contents($re);
         $str = str_replace("protected \$redirectTo = '/home';", "protected \$redirectTo = '/admin';", $str);
-        $str = str_replace("'name' => ['required', 'string', 'max:255'],", "'nick_name' => ['required', 'string', 'unique:users']", $str);
-        $str = str_replace("'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],", "'{$this->name}' => ['required', 'string', 'unique:users']", $str);
+        $str = str_replace("'name' => ['required', 'string', 'max:255'],", "'nick_name' => ['required', 'string'],", $str);
+        $str = str_replace("'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],", "'{$this->name}' => ['required', 'string', 'unique:users'],", $str);
         $str = str_replace("'name' => \$data['name']", "'nick_name' => \$data['nick_name']", $str);
         $str = str_replace("'email' => \$data['email'],", "'{$this->name}' => \$data['{$this->name}'],", $str);
 //        $this->info($str);
@@ -106,7 +133,7 @@ str;
 
         <div class="form-group row">
                 <label for="{$item}"
-                       class="col-md-4 col-form-label text-md-right">{$item}</label>
+                       class="col-md-4 col-form-label text-md-right">{{ __('{$item}') }}</label>
                 <div class="col-md-6">
                     <input id="{$item}" type="text"
                            class="form-control{{ \$errors->has('{$item}') ? ' is-invalid' : '' }}"
@@ -122,13 +149,13 @@ str;
 str;
         }
         $file_str = file_get_contents($file);
-        $file_str = str_replace("Georgie_insert",$str,$file_str);
-        file_put_contents($file,$file_str);
+        $file_str = str_replace("Georgie_insert", $str, $file_str);
+        file_put_contents($file, $file_str);
 
 
         //注册模板
         $file = base_path("resources/views/auth/register.blade.php");
-        $arr = [$this->name,'nick_name'];
+        $arr = [$this->name, 'nick_name'];
         $str = "";
         foreach ($arr as $item) {
             $str .= <<<str
@@ -153,8 +180,8 @@ str;
 str;
         }
         $file_str = file_get_contents($file);
-        $file_str = str_replace("Georgie_insert",$str,$file_str);
-        file_put_contents($file,$file_str);
+        $file_str = str_replace("Georgie_insert", $str, $file_str);
+        file_put_contents($file, $file_str);
     }
 
     protected function copyMigrations()
@@ -162,20 +189,20 @@ str;
         //复制迁移文件
         $a = __DIR__ . '/../dis/auth/migrations';
         $b = base_path("database/migrations");
-        $this->xCopy($a, $b, 1,'.php');
+        $this->xCopy($a, $b, 1, '.php');
         $this->info("alter User complete!");
 
         if ($this->name != "name") {
             $file = base_path("database/migrations/2014_10_12_000000_create_users_table.php");
             $str = file_get_contents($file);
-            $str = str_replace("\$table->string('name')->unique();", "\$table->string('{$this->name}')->unique();");
+            $str = str_replace("\$table->string('name')->unique();", "\$table->string('{$this->name}')->unique();", $str);
             file_put_contents($file, $str);
         }
     }
 
 
     //copy fun
-    protected function xCopy($source, $destination, $child = 1,$ex='')
+    protected function xCopy($source, $destination, $child = 1, $ex = '')
     {//用法：
         // xCopy("feiy","feiy2",1):拷贝feiy下的文件到 feiy2,包括子目录
         // xCopy("feiy","feiy2",0):拷贝feiy下的文件到 feiy2,不包括子目录
@@ -198,9 +225,9 @@ str;
             if (($entry != ".") && ($entry != "..")) {
                 if (is_dir($source . "/" . $entry)) {
                     if ($child)
-                        $this->xCopy($source . "/" . $entry, $destination . "/" . $entry, $child,$ex);
+                        $this->xCopy($source . "/" . $entry, $destination . "/" . $entry, $child, $ex);
                 } else {
-                    copy($source . "/" . $entry, $destination . "/" . $entry.$ex);
+                    copy($source . "/" . $entry, $destination . "/" . $entry . $ex);
                 }
             }
         }
