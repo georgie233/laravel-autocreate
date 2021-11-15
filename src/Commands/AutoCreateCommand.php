@@ -165,6 +165,7 @@ str;
             return false;
         }
 
+        //store
         $str = "";
         foreach ($this->formatColumns() as $column) {
             if (isset($column['options']) && count($column['options']) >= 2) {
@@ -180,6 +181,41 @@ str;
         }
 
         $this->setVar("STOREINSERT", $str);
+
+        //update
+        $str = "";
+        foreach ($this->formatColumns() as $column) {
+            if (isset($column['options']) && count($column['options']) >= 2) {
+                if ($column['options'][1] == "image") {
+                    $str .= <<<str
+        if (\$this->getRequesFile(\$request,'img')){
+            \$this->delFile(\${$this->vars['SMODEL']}['{$column["name"]}']);
+            \$s = \$this->saveFile(\$request, 'img');
+            if (is_string(\$s)) \$data['{$column["name"]}'] = \$s . '';
+        }
+str;
+
+                }
+            }
+        }
+        $this->setVar('UPDATEINSERT',$str);
+
+        //dek
+        $str = "";
+        foreach ($this->formatColumns() as $column) {
+            if (isset($column['options']) && count($column['options']) >= 2) {
+                if ($column['options'][1] == "image") {
+                    $str .= <<<str
+        \$this->delFile(\${$this->vars['SMODEL']}['{$column["name"]}']);
+str;
+                }
+            }
+        }
+        $this->setVar('DELETEINSERT',$str);
+
+
+
+
         $content = $this->replaceVars(__DIR__ . '/../Build/controller.tpl');
         file_put_contents($file, $content);
         $this->info('controller create successflly');
