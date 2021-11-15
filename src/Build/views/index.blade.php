@@ -1,11 +1,5 @@
 @extends('admin::layouts.master')
 @section('content')
-    <script type="text/javascript">if (window.innerWidth < 600) {
-            window.location.href = window.location.href;
-            let dom = document.getElementsByClassName('alert-msg');
-            if (dom)localStorage.setItem('dom',dom[0].innerHTML);
-        }
-    </script>
     <div class="card" id="app">
         <div class="card-header">{MODEL_TITLE}管理</div>
         <div class="tab-container">
@@ -60,3 +54,11 @@
         }
     </script>
 @endsection
+@section('content_script')
+    <script type="text/javascript">if (window.innerWidth < 600) {
+            window.location.href = window.location.href;
+            let dom = document.getElementsByClassName('alert-msg');
+            if (dom) localStorage.setItem('dom', dom[0].innerHTML);
+        }
+    </script>
+@stop
