@@ -33,9 +33,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer m-0 p-0 text-right" style="font-size: 12px;color: #666">
-                                <div style="margin-right: 5px;">创建时间：{!! $d['created_at'] !!}</div>
-                                <div style="margin-right: 5px;">修改时间：{!! $d['updated_at'] !!}</div>
+                            <div class="d-flex card-footer m-0 p-0 justify-content-between">
+                                <div class="ellipsis" style="flex:1;">
+                                    <span class="pl-1" style="font-size: 17px;">...</span>
+                                </div>
+                                <div class="text-right" style="font-size: 12px;color: #666">
+                                    <div style="margin-right: 5px;">创建时间：{!! $d['created_at'] !!}</div>
+                                    <div style="margin-right: 5px;">修改时间：{!! $d['updated_at'] !!}</div>
+                                </div>
                             </div>
                         </div>
                     @endforeach
