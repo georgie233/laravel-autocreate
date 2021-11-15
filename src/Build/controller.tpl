@@ -31,10 +31,6 @@ class {CONTROLLE_NAME} extends BaseController
     {
         $data = $request->all();
 
-        //$s = $this->saveFile($request, 'img', '请上传封面图片');
-        //if (!is_string($s)) return $s;
-        //$data['img'] = $s.'';
-
         {STOREINSERT}
 
 
@@ -63,7 +59,11 @@ class {CONTROLLE_NAME} extends BaseController
     //更新数据 PUT: /{SMODEL}/id
     public function update({MODEL}Request $request, {MODEL} ${SMODEL})
     {
-        ${SMODEL}->update($request->all());
+        $data = $request->all();
+
+        {UPDATEINSERT}
+
+        ${SMODEL}->update($data);
 
         if ($this->isAjax) return $this->responseSuccess(${SMODEL});
         return redirect('/{ROUTE_ROOT}')->with('success','更新成功');
@@ -72,6 +72,7 @@ class {CONTROLLE_NAME} extends BaseController
     //删除模型 DELETE: /{SMODEL}/id
     public function destroy({MODEL} ${SMODEL})
     {
+        {DELETEINSERT}
         ${SMODEL}->delete();
 
         if ($this->isAjax) return $this->responseSuccess([]);
