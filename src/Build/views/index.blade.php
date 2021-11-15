@@ -1,5 +1,6 @@
 @extends('admin::layouts.master')
 @section('content')
+    <script type="text/javascript">if (window.innerWidth < 600) window.location.href = window.location.href;</script>
     <div class="card" id="app">
         <div class="card-header">{MODEL_TITLE}管理</div>
         <div class="tab-container">
