@@ -2,14 +2,14 @@
 
 namespace Georgie\AutoCreate\Commands;
 
-use Georgie\AutoCreate\Traits\CreateView;
+use Georgie\AutoCreate\Traits\CreateView2 as CreateView;
 use Georgie\AutoCreate\Traits\Db;
 use Georgie\AutoCreate\Traits\BuildVars;
 use Illuminate\Console\Command;
 use Artisan;
 use Storage;
 
-class AutoCreateCommand extends Command
+class AutoNameCreateCommand extends Command
 {
     use BuildVars, Db, CreateView;
 
@@ -18,7 +18,7 @@ class AutoCreateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'g:autocreate {model} {module} {title}';
+    protected $signature = 'g:autocreateName {model} {module} {title}';
 
     /**
      * The console command description.
@@ -59,8 +59,9 @@ class AutoCreateCommand extends Command
         $this->title = $this->argument('title');
         $this->setVar('MODEL_TITLE', $this->title);
         $this->setModelInstance();
-        $this->setVar();
+        $this->setVars();
         $this->setModelFillable();
+        //----
         $this->createController();
         $this->createRequest();
         $this->createRoute();
@@ -135,7 +136,7 @@ class AutoCreateCommand extends Command
 //{$this->vars['SMODEL']}-route
 Route::group(['middleware' => ['web'],'prefix'=>'{$this->vars['SMODULE']}','namespace'=>"{$this->vars['NAMESPACE_HTTP']}\Controllers"],
 function () {
-    Route::resource('{$this->vars['SMODEL']}', '{$this->vars['MODEL']}Controller');
+    Route::resource('{$this->vars['SMODEL']}', '{$this->vars['MODEL']}Controller')->names('{$this->vars['SMODULE']}_{$this->vars['SMODEL']}');
 });
 str;
             $route .= <<<str
@@ -216,7 +217,7 @@ str;
 
 
 
-        $content = $this->replaceVars(__DIR__ . '/../Build/controller.tpl');
+        $content = $this->replaceVars(__DIR__ . '/../Build2/controller.tpl');
         file_put_contents($file, $content);
         $this->info('controller create successflly');
     }
@@ -227,7 +228,7 @@ str;
         if (is_file($file)) {
             return false;
         }
-        $content = $this->replaceVars(__DIR__ . '/../Build/request.tpl');
+        $content = $this->replaceVars(__DIR__ . '/../Build2/request.tpl');
         $content = str_replace('{REQUEST_RULE}', var_export($this->getRequestRule(), true), $content);
         $content = str_replace('{REQUEST_RULE_MESSAGE}', var_export($this->getRequestRuleMessage(), true), $content);
         file_put_contents($file, $content);

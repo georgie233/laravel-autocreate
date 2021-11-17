@@ -2,27 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6072a822-c4c8-4192-b273-d7fca1dacff7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Build/controller.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/controller.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/forms/checkbox.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/forms/checkbox.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/forms/date.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/forms/date.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/forms/datetime.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/forms/datetime.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/forms/image.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/forms/image.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/forms/input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/forms/input.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/forms/radio.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/forms/radio.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/forms/select.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/forms/select.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/forms/simditor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/forms/simditor.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/forms/textarea.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/forms/textarea.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/request.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/request.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/views/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/views/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/views/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/views/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Build/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Build/views/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/controller.tpl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/forms/checkbox.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/forms/date.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/forms/datetime.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/forms/image.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/forms/input.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/forms/radio.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/forms/select.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/forms/simditor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/forms/textarea.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/request.tpl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/views/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/views/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/views/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/views/mobile.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Build2/views/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Commands/AutoNameCreateCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Traits/CreateView2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/laravel-autocreate.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-autocreate.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Commands/AutoCreateCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Commands/AutoCreateCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServiceProvider.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -39,7 +47,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Traits" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\123\laravel-autocreate\src\Traits" />
+      <recent name="C:\Users\Administrator\Desktop\123\laravel-autocreate\src" />
+      <recent name="C:\Users\Administrator\Desktop\123\laravel-autocreate\src\Commands" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -50,10 +66,22 @@
       <option name="presentableId" value="Default" />
       <updated>1636451322016</updated>
       <workItem from="1636451325093" duration="81000" />
+      <workItem from="1637121126463" duration="2156000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
