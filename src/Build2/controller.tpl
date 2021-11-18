@@ -76,6 +76,6 @@ class {CONTROLLE_NAME} extends BaseController
         ${SMODEL}->delete();
 
         if ($this->isAjax) return $this->responseSuccess([]);
-        return redirect('{ROUTE_ROOT}')->route("{SMODULE}_{SMODEL}.index")->with('success','删除成功');
+        return redirect()->route("{SMODULE}_{SMODEL}.index")->with('success','删除成功');
     }
 }
