@@ -14,7 +14,7 @@ class AuthController extends BaseController
         'user' => ['users', 'account', 'password'],
     ];
     protected $tbName_model = [
-          'users'=>User::class
+        'users' => User::class,
     ];
     protected $LoginExcludeKey = [''];
     protected $RegisterExcludeKey = ['users'];
@@ -24,7 +24,7 @@ class AuthController extends BaseController
     public function login(Request $request, $key)
     {
         if ($t = $this->checking($request, $key, $this->LoginExcludeKey)) return $t;
-        return (new AuthLogin())->login($request->all(),$this->tableName, $this->name, $this->password);
+        return (new AuthLogin())->login($request->all(), $this->tableName, $this->name, $this->password);
     }
 
     public function register(Request $request, $key)
@@ -47,7 +47,8 @@ class AuthController extends BaseController
         return false;
     }
 
-    public function getModel($tableName){
+    public function getModel($tableName)
+    {
         return $this->tbName_model[$tableName];
     }
 }
