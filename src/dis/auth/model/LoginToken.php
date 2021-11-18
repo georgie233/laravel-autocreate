@@ -23,14 +23,14 @@ class LoginToken extends Model
 
     public function getTokenData($token)
     {
-        $data = $this->where('token', $token)->first();
+        $data = $this->where('token', $token)->orderBy('created_at','desc')->first();
         $this->err = "获取不到";
         if (!$data) return false;
         $c = $data['created_at'];
         $now = date('Y-m-d H:i:s', time());
-        $m = floor((strtotime($now) - strtotime($c)) % 86400 / 60);
+        $m = floor((strtotime($now) - strtotime($c)));
         $this->err = "token已过期";
-        $data['valid'] = $this->expirationMinute > $m;
+        $data['valid'] = $m < $this->expirationMinute;
         return $data;
     }
 
