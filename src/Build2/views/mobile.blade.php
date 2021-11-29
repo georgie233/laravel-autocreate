@@ -55,9 +55,9 @@
 @section('scripts')
     <script>
         function del(id, el) {
-            if (confirm('确定删除吗？')) {
-                $(el).next('form').trigger('submit')
-            }
+          //  if (confirm('确定删除吗？')) {
+          //      $(el).next('form').trigger('submit')
+          //  }
         }
     </script>
 @endsection
