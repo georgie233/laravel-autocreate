@@ -144,7 +144,7 @@ str;
 //{$this->vars['SMODEL']}-route-api
 Route::group(['middleware' => ['api'],'prefix'=>'api/{$this->vars['SMODULE']}','namespace'=>"{$this->vars['NAMESPACE_HTTP']}\Controllers"],
 function () {
-    Route::resource('{$this->vars['SMODEL']}', '{$this->vars['MODEL']}Controller');
+    //Route::resource('{$this->vars['SMODEL']}', '{$this->vars['MODEL']}Controller');
 });
 str;
         } else {
