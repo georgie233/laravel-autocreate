@@ -5,6 +5,7 @@ namespace Georgie\AutoCreate;
 use Georgie\AutoCreate\Commands\AuthCommand;
 use Georgie\AutoCreate\Commands\AutoCreateCommand;
 use Georgie\AutoCreate\Commands\AutoNameCreateCommand;
+use Georgie\AutoCreate\Commands\InitCommand;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
@@ -23,6 +24,8 @@ class ServiceProvider extends BaseServiceProvider
                 AutoCreateCommand::class,
                 AutoNameCreateCommand::class,
                 AuthCommand::class,
+                InitCommand::class,
+                
             ]);
         }
     }
